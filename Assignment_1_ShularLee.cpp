@@ -10,6 +10,7 @@
 #include "OgreApplicationContext.h"
 #include "OgreInput.h"
 #include "OgreRTShaderSystem.h"
+#include "OgreFrustum.h"
 #include <iostream>
 
 using namespace Ogre;
@@ -142,7 +143,7 @@ void OgreTutorial::createScene()
     lightNode->attachObject(lightEnt);
     lightNode->attachObject(light);
     lightNode->setScale(0.01f, 0.01f, 0.01f);
-
+    lightNode->setPosition(0.0f, 100.0f, 0);
     //! [newlight]
     //The first thing we'll do is create an abstract Plane object. This is not the mesh, it is more of a blueprint.
     Plane plane(Vector3::UNIT_Y, -10);
@@ -162,18 +163,18 @@ void OgreTutorial::createScene()
     groundEntity->setCastShadows(false);
     //And finally we need to give our ground a material.
     groundEntity->setMaterialName("Examples/BeachStones");
+    
 
-
-    Entity* ent = scnMgr->createEntity("Sinbad.mesh");
-    ent->setCastShadows(true);
-    SinbadNode = scnMgr->createSceneNode("Character");
-    SinbadNode->attachObject(ent);
+    Entity* ball = scnMgr->createEntity("sphere.mesh");
+    ball->setCastShadows(false);
+    SinbadNode = scnMgr->createSceneNode("ball");
+    SinbadNode->attachObject(ball);
     scnMgr->getRootSceneNode()->addChild(SinbadNode);
-    SinbadNode->setPosition(Ogre::Vector3(0.0f, 4.0f, 0.0f));
-    SinbadNode->setScale(3.0f, 3.0f, 3.0f);
+    SinbadNode->setPosition(Ogre::Vector3(0.0f, 4.0f, 10.0f));
+    SinbadNode->setScale(0.05f, 0.05f, 0.05f);
 
     Entity* paddle = scnMgr->createEntity("cube.mesh");
-    paddle->setCastShadows(true);
+    paddle->setCastShadows(false);
     SinbadNode = scnMgr->createSceneNode("paddle");
     SinbadNode->attachObject(paddle);
     scnMgr->getRootSceneNode()->addChild(SinbadNode);
@@ -187,9 +188,11 @@ void OgreTutorial::createCamera()
     SceneNode* camNode = scnMgr->getRootSceneNode()->createChildSceneNode();
 
     // create the camera
-    Camera* cam = scnMgr->createCamera("myCam");
+    Camera* cam = scnMgr->createCamera("myCam");    
+    cam->setProjectionType(PT_ORTHOGRAPHIC);
+    cam->setOrthoWindowHeight(100);
     cam->setNearClipDistance(5); // specific to this sample
-    cam->setAutoAspectRatio(true);
+    cam->setAutoAspectRatio(false);
     camNode->attachObject(cam);
     camNode->setPosition(0, 100, 0);
     camNode->lookAt(Ogre::Vector3(0, 0, 0), Node::TS_WORLD);
@@ -206,6 +209,7 @@ void OgreTutorial::createFrameListener()
 {
     Ogre::FrameListener* FrameListener = new ExampleFrameListener(SinbadNode);
     mRoot->addFrameListener(FrameListener);
+
 }
 
 int main(int argc, char** argv)
