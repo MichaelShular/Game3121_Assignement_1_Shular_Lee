@@ -29,7 +29,7 @@ public:
 
     bool frameStarted(const Ogre::FrameEvent& evt)
     {
-        _node->translate(Ogre::Vector3(0.1, 0, 0));
+        _node->translate(Ogre::Vector3(0.0, 0, 0));
         return true;
     }
 };
@@ -59,6 +59,7 @@ OgreTutorial::OgreTutorial()
 {
 }
 
+Ogre::Real x = 0.0, y = 0.0, z = 0.0;
 
 void OgreTutorial::setup()
 {
@@ -84,10 +85,27 @@ void OgreTutorial::setup()
 
 bool OgreTutorial::keyPressed(const KeyboardEvent& evt)
 {
-    if (evt.keysym.sym == SDLK_ESCAPE)
+    switch (evt.keysym.sym)
+
     {
+    case SDLK_ESCAPE:
         getRoot()->queueEndRendering();
+        break;
+    case 97: //ASCII code for "a"
+
+    {
+        SinbadNode->translate(Ogre::Vector3(-0.3, 0, 0));
     }
+    break;
+    case 100: //ASCII code for "d"
+
+    {
+        SinbadNode->translate(Ogre::Vector3(0.3, 0, 0));
+    }
+    default:
+        break;
+    }
+    //SinbadNode->setPosition(x, y, z);
     return true;
 }
 
@@ -153,6 +171,14 @@ void OgreTutorial::createScene()
     scnMgr->getRootSceneNode()->addChild(SinbadNode);
     SinbadNode->setPosition(Ogre::Vector3(0.0f, 4.0f, 0.0f));
     SinbadNode->setScale(3.0f, 3.0f, 3.0f);
+
+    Entity* paddle = scnMgr->createEntity("cube.mesh");
+    paddle->setCastShadows(true);
+    SinbadNode = scnMgr->createSceneNode("paddle");
+    SinbadNode->attachObject(paddle);
+    scnMgr->getRootSceneNode()->addChild(SinbadNode);
+    SinbadNode->setPosition(Ogre::Vector3(0.0f, 4.0f, 20.0f));
+    SinbadNode->setScale(0.2f, 0.1f, 0.05f);
 }
 
 void OgreTutorial::createCamera()
@@ -165,7 +191,7 @@ void OgreTutorial::createCamera()
     cam->setNearClipDistance(5); // specific to this sample
     cam->setAutoAspectRatio(true);
     camNode->attachObject(cam);
-    camNode->setPosition(0, 100, 200);
+    camNode->setPosition(0, 100, 0);
     camNode->lookAt(Ogre::Vector3(0, 0, 0), Node::TS_WORLD);
 
     // and tell it to render into the main window
