@@ -2,6 +2,7 @@
 #include <iostream>
 Ball::Ball(Ogre::SceneManager* scMgr, SceneNode* SceneNode, Paddle* _pad)
 {
+    mScore = 0;
 	this->mSceneManager = scMgr;
     mSceneNode = SceneNode;
     this->mEntity = mSceneManager->createEntity("sphere.mesh");
@@ -15,8 +16,7 @@ Ball::Ball(Ogre::SceneManager* scMgr, SceneNode* SceneNode, Paddle* _pad)
     mBallSpeed = 30.f;    
     mBallDirection = Vector3(-1, 0, -1);
     mStay = false;
-    mSceneNode->getShowBoundingBox();
-    mSceneNode->showBoundingBox(true);
+    mSceneNode->getShowBoundingBox();    
     mSceneNode->_getWorldAABB();
 }
 
@@ -33,16 +33,23 @@ void Ball::Reset()
 {
 }
 
+int Ball::GetScore()
+{
+    return mScore;
+}
+
 void Ball::RemoveLife()
 {
+    --mNumLife;
 }
 
 void Ball::SetBallDir()
 {
 }
 
-void Ball::getNumberOfLife()
+int Ball::getNumberOfLife()
 {
+    return mNumLife;
 }
 
 void Ball::Update(Ogre::Real real)
@@ -59,6 +66,7 @@ void Ball::Update(Ogre::Real real)
                 || mSceneNode->getPosition().x < pad->GetPosition().x - 10)
                 mBallDirection.x *= -1;
             mBallDirection.z *= -1;
+            ++mScore;            
         }
         //Wall Collision
         

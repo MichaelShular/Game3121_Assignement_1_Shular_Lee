@@ -15,9 +15,9 @@ public:
 	void Reset();
 	void RemoveLife();
 	void SetBallDir();
-	void getNumberOfLife();
-	void Update(Ogre::Real real);
-	
+	int getNumberOfLife();
+	void Update(Ogre::Real real);	
+	int GetScore();
 	void SetStart();
 	void Moving();
 	void CollisionDetection();
@@ -30,6 +30,7 @@ private:
 	int32 mBallSpeed;
 	Vector3 mBallDirection;
 	int mNumLife;
+	int mScore;
 	bool mStay;
 };
 

@@ -12,8 +12,7 @@ Paddle::Paddle(Ogre::SceneManager* scMgr, SceneNode* SceneNode)
     mSceneNode->setPosition(Ogre::Vector3(0.0f, 4.0f, 40.0f));
     mSceneNode->setScale(0.2f, 0.1f, 0.05f);
     
-    mSceneNode->getShowBoundingBox();
-    mSceneNode->showBoundingBox(true);
+    mSceneNode->getShowBoundingBox();    
     mSceneNode->_getWorldAABB();
 }
 
@@ -25,8 +24,7 @@ Ogre::Vector3 Paddle::GetPosition()
 
 void Paddle::MoveRight()
 {
-    mSceneNode->translate(Vector3(0.9, 0.0, 0));
-    std::cout << mSceneNode->getPosition().x << std::endl;
+    mSceneNode->translate(Vector3(0.9, 0.0, 0));    
 }
 
 void Paddle::MoveLeft()
