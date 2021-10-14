@@ -68,14 +68,14 @@ class Updater : public Ogre::FrameListener
 {
 private:
     Ogre::SceneNode* _sceneNode;
-    
+    UI* _UI;
     Ball* _ball;
     Ogre::SceneNode* _camNode;
     float _movementspeed;
     float _mousespeed;
 public:
 
-    Updater(Ball* ball, Ogre::SceneNode* camNode)
+    Updater(Ball* ball, Ogre::SceneNode* camNode, UI* UI)
     {
         _ball = ball;
         _camNode = camNode;
@@ -85,7 +85,7 @@ public:
 
     bool frameStarted(const Ogre::FrameEvent& evt)
     {      
-        
+        _UI->setFrames("5");
         _ball->Update(evt.timeSinceLastFrame);
         return true;
     }
@@ -142,14 +142,15 @@ void Game::setup()
     shadergen->addSceneManager(scnMgr);
     createScene();    
     createCamera();
-    createFrameListener();
     createTrayListener();
+    createFrameListener();
+
     
 }
 
 void Game::createFrameListener()
 {
-    Ogre::FrameListener* FrameListener = new Updater(ball, SinbadNode);
+    Ogre::FrameListener* FrameListener = new Updater(ball, SinbadNode, UILabels);
     mRoot->addFrameListener(FrameListener);
 }
 
