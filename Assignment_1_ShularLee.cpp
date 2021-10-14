@@ -13,6 +13,7 @@
 #include "OgreFrustum.h"
 #include "Ball.h"
 #include "Paddle.h"
+#include "OgreTrays.h"
 #include <iostream>
 
 using namespace Ogre;
@@ -50,21 +51,26 @@ class Game
 {
 private:
     Ogre::FrameListener* FrameListener;
+    //OgreBites::TrayListener myTrayListener;
     SceneNode* SinbadNode;    
     SceneManager* scnMgr;
     Root* root;
     Paddle* paddle;
     Ball* ball;
-      
+    OgreBites::Label* mLives;
+    OgreBites::Label* mScore;
+    OgreBites::Label* mFrames;
+    OgreBites::Label* mTime;
+    
 public:
     Game();
     virtual ~Game() {}
     void setup();
     bool keyPressed(const KeyboardEvent& evt);
-            
     void createScene();
     void createCamera();
     void createFrameListener();
+    void createTrayListener();
 };
 
 Game::Game()
@@ -92,12 +98,27 @@ void Game::setup()
     createScene();    
     createCamera();
     createFrameListener();
+    createTrayListener();
+    
 }
 
 void Game::createFrameListener()
 {
     Ogre::FrameListener* FrameListener = new Updater(ball, SinbadNode);
     mRoot->addFrameListener(FrameListener);
+}
+
+void Game::createTrayListener()
+{
+    //Adding UI
+    OgreBites::TrayManager* mTrayMgr = new OgreBites::TrayManager("InterfaceName", getRenderWindow());
+    scnMgr->addRenderQueueListener(mOverlaySystem);
+    addInputListener(mTrayMgr);    
+    
+    mLives = mTrayMgr->createLabel(TL_TOPLEFT, "lives", "Lives: 3", 150);
+    mScore = mTrayMgr->createLabel(TL_TOPLEFT, "score", "Score: 0", 150);
+    mFrames = mTrayMgr->createLabel(TL_TOPRIGHT, "frames", "Frames: ", 150);
+    mTime = mTrayMgr->createLabel(TL_TOPRIGHT, "time", "Time: ", 150);
 }
 
 bool Game::keyPressed(const KeyboardEvent& evt)
@@ -177,8 +198,7 @@ void Game::createScene()
     groundEntity->setCastShadows(false);
     //And finally we need to give our ground a material.
     groundEntity->setMaterialName("Examples/BeachStones");
-    
-     
+
     paddle = new Paddle(scnMgr, SinbadNode);
     ball = new Ball(scnMgr, SinbadNode, paddle);
 }
