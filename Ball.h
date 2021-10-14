@@ -13,14 +13,13 @@ public:
 	~Ball();
 	Ogre::Vector3 GetPosition();
 	void Reset();
-	void RemoveLife();
-	void SetBallDir();
+	void RemoveLife();	
 	int getNumberOfLife();
 	void Update(Ogre::Real real);	
 	int GetScore();
 	void SetStart();
 	void Moving();
-	void CollisionDetection();
+	
 	
 private:
 	Paddle* pad;

@@ -10,8 +10,7 @@ Paddle::Paddle(Ogre::SceneManager* scMgr, SceneNode* SceneNode)
     mSceneNode->attachObject(mEntity);
     mSceneManager->getRootSceneNode()->addChild(mSceneNode);
     mSceneNode->setPosition(Ogre::Vector3(0.0f, 4.0f, 40.0f));
-    mSceneNode->setScale(0.2f, 0.1f, 0.05f);
-    
+    mSceneNode->setScale(0.2f, 0.1f, 0.05f);    
     mSceneNode->getShowBoundingBox();    
     mSceneNode->_getWorldAABB();
 }

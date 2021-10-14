@@ -181,6 +181,8 @@ bool Game::keyPressed(const KeyboardEvent& evt)
     {
         paddle->MoveRight();
     }
+    case 32:
+        ball->SetStart();
     default:
         break;
     }

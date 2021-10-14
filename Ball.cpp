@@ -13,9 +13,10 @@ Ball::Ball(Ogre::SceneManager* scMgr, SceneNode* SceneNode, Paddle* _pad)
     mSceneNode->setPosition(Ogre::Vector3(0.0f, 4.0f, 34.0f ));
     mSceneNode->setScale(0.03f, 0.03f, 0.03f);
     pad = _pad;
+    mNumLife = 5;
     mBallSpeed = 30.f;    
     mBallDirection = Vector3(-1, 0, -1);
-    mStay = false;
+    mStay = true;
     mSceneNode->getShowBoundingBox();    
     mSceneNode->_getWorldAABB();
 }
@@ -31,6 +32,10 @@ Ogre::Vector3 Ball::GetPosition()
 
 void Ball::Reset()
 {
+    mScore = 0;
+    mNumLife = 5;
+    mStay = true;
+    mBallDirection = Vector3(-1, 0, -1);
 }
 
 int Ball::GetScore()
@@ -38,13 +43,14 @@ int Ball::GetScore()
     return mScore;
 }
 
+void Ball::SetStart()
+{
+    mStay = false;
+}
+
 void Ball::RemoveLife()
 {
     --mNumLife;
-}
-
-void Ball::SetBallDir()
-{
 }
 
 int Ball::getNumberOfLife()
@@ -53,49 +59,52 @@ int Ball::getNumberOfLife()
 }
 
 void Ball::Update(Ogre::Real real)
-{    
-    if (!mStay)
+{
+    if (mNumLife <= 0)
     {
-        //Paddle Collision
-        // Paddle size Vector3(20, 10, 5)
-        // ball Size Vector3(6, 6, 6)
-        AxisAlignedBox aab = mSceneNode->_getWorldAABB().intersection(pad->GetWorldAABB());
-        if (!aab.isNull())
+
+    }
+    else {
+
+
+        if (!mStay)
         {
-            if (mSceneNode->getPosition().x > pad->GetPosition().x + 10
-                || mSceneNode->getPosition().x < pad->GetPosition().x - 10)
+            //Paddle Collision
+            // Paddle size Vector3(20, 10, 5)
+            // ball Size Vector3(6, 6, 6)
+            AxisAlignedBox aab = mSceneNode->_getWorldAABB().intersection(pad->GetWorldAABB());
+            if (!aab.isNull())
+            {
+                if (mSceneNode->getPosition().x > pad->GetPosition().x + 10
+                    || mSceneNode->getPosition().x < pad->GetPosition().x - 10)
+                    mBallDirection.x *= -1;
+                mBallDirection.z *= -1;
+                ++mScore;
+            }
+            //Wall Collision
+
+            //Moving
+            mSceneNode->translate(mBallDirection * mBallSpeed * real);
+            //Top
+            if (mSceneNode->getPosition().z < -45)
+                mBallDirection.z *= -1;
+            //Right
+            if (mSceneNode->getPosition().x > 65)
                 mBallDirection.x *= -1;
-            mBallDirection.z *= -1;
-            ++mScore;            
+            //Left
+            if (mSceneNode->getPosition().x < -65)
+                mBallDirection.x *= -1;
+            //Bottom
+            if (mSceneNode->getPosition().z > 50)
+            {
+                RemoveLife();
+                mBallDirection = Vector3(-1, 0, -1);
+                mStay = true;
+            }
         }
-        //Wall Collision
-        
-        //Moving
-        mSceneNode->translate(mBallDirection * mBallSpeed * real);
-        //Top
-        if (mSceneNode->getPosition().z < -52)
-            mBallDirection.z *= -1;
-        //Right
-        if (mSceneNode->getPosition().x > 65)
-            mBallDirection.x *= -1;
-        //Left
-        if (mSceneNode->getPosition().x < -65)
-            mBallDirection.x *= -1;
-        //Bottom
-        if (mSceneNode->getPosition().z > 50)
-            mBallDirection.z *= -1;
+        else
+        {
+            mSceneNode->setPosition(pad->GetPosition().x, pad->GetPosition().y, 34.0f);
+        }
     }
-    else
-    {
-        mSceneNode->setPosition(pad->GetPosition().x, pad->GetPosition().y, 34.0f);
-    }
-}
-
-void Ball::Moving()
-{
-}
-
-void Ball::CollisionDetection()
-{
-
 }
