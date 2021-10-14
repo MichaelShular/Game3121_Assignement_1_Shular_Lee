@@ -15,9 +15,54 @@
 #include "Paddle.h"
 #include "OgreTrays.h"
 #include <iostream>
+#include <OgreTimer.h>
 
 using namespace Ogre;
 using namespace OgreBites;
+
+class UI 
+{
+private:
+    OgreBites::Label* mLives;
+    OgreBites::Label* mScore;
+    OgreBites::Label* mFrames;
+    OgreBites::Label* mTime;
+public: 
+    UI(TrayManager* mTrayMgr);
+    virtual ~UI() {};
+    void setTime(String a);
+    void setLives(String a);
+    void setScore(String a);
+    void setFrames(String a);
+};
+
+UI::UI(TrayManager* mTrayMgr)
+{
+    mLives = mTrayMgr->createLabel(TL_TOPLEFT, "lives", "Lives: 3", 150);
+    mScore = mTrayMgr->createLabel(TL_TOPLEFT, "score", "Score: 0", 150);
+    mFrames = mTrayMgr->createLabel(TL_TOPRIGHT, "frames", "Frames: ", 150);
+    mTime = mTrayMgr->createLabel(TL_TOPRIGHT, "time", "Time: ", 150);
+}
+
+void UI::setTime(String a)
+{
+    mTime->setCaption(a);
+}
+
+void UI::setLives(String a)
+{
+    mLives->setCaption(a);
+}
+
+void UI::setScore(String a)
+{
+    mScore->setCaption(a);
+}
+
+void UI::setFrames(String a)
+{
+    mFrames->setCaption(a);
+}
 
 class Updater : public Ogre::FrameListener
 {
@@ -39,7 +84,8 @@ public:
     }
 
     bool frameStarted(const Ogre::FrameEvent& evt)
-    {        
+    {      
+        
         _ball->Update(evt.timeSinceLastFrame);
         return true;
     }
@@ -51,16 +97,15 @@ class Game
 {
 private:
     Ogre::FrameListener* FrameListener;
-    //OgreBites::TrayListener myTrayListener;
+    OgreBites::TrayListener myTrayListener;
+    OgreBites::TrayManager* mTrayMgr;
     SceneNode* SinbadNode;    
     SceneManager* scnMgr;
     Root* root;
     Paddle* paddle;
     Ball* ball;
-    OgreBites::Label* mLives;
-    OgreBites::Label* mScore;
-    OgreBites::Label* mFrames;
-    OgreBites::Label* mTime;
+    UI* UILabels;
+    
     
 public:
     Game();
@@ -111,14 +156,10 @@ void Game::createFrameListener()
 void Game::createTrayListener()
 {
     //Adding UI
-    OgreBites::TrayManager* mTrayMgr = new OgreBites::TrayManager("InterfaceName", getRenderWindow());
-    scnMgr->addRenderQueueListener(mOverlaySystem);
-    addInputListener(mTrayMgr);    
-    
-    mLives = mTrayMgr->createLabel(TL_TOPLEFT, "lives", "Lives: 3", 150);
-    mScore = mTrayMgr->createLabel(TL_TOPLEFT, "score", "Score: 0", 150);
-    mFrames = mTrayMgr->createLabel(TL_TOPRIGHT, "frames", "Frames: ", 150);
-    mTime = mTrayMgr->createLabel(TL_TOPRIGHT, "time", "Time: ", 150);
+    mTrayMgr = new OgreBites::TrayManager("InterfaceName", getRenderWindow());
+    scnMgr->addRenderQueueListener(getOverlaySystem());
+    addInputListener(mTrayMgr); 
+    UILabels = new UI(mTrayMgr);
 }
 
 bool Game::keyPressed(const KeyboardEvent& evt)
