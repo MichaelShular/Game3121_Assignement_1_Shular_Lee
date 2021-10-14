@@ -14,7 +14,10 @@ Ball::Ball(Ogre::SceneManager* scMgr, SceneNode* SceneNode, Paddle* _pad)
     pad = _pad;
     mBallSpeed = 30.f;    
     mBallDirection = Vector3(-1, 0, -1);
-    mStay = true;    
+    mStay = false;
+    mSceneNode->getShowBoundingBox();
+    mSceneNode->showBoundingBox(true);
+    mSceneNode->_getWorldAABB();
 }
 
 Ball::~Ball()
@@ -46,9 +49,23 @@ void Ball::Update(Ogre::Real real)
 {    
     if (!mStay)
     {
+        //Paddle Collision
+        // Paddle size Vector3(20, 10, 5)
+        // ball Size Vector3(6, 6, 6)
+        AxisAlignedBox aab = mSceneNode->_getWorldAABB().intersection(pad->GetWorldAABB());
+        if (!aab.isNull())
+        {
+            if (mSceneNode->getPosition().x > pad->GetPosition().x + 10
+                || mSceneNode->getPosition().x < pad->GetPosition().x - 10)
+                mBallDirection.x *= -1;
+            mBallDirection.z *= -1;
+        }
+        //Wall Collision
+        
+        //Moving
         mSceneNode->translate(mBallDirection * mBallSpeed * real);
         //Top
-        if (mSceneNode->getPosition().z < -65)
+        if (mSceneNode->getPosition().z < -52)
             mBallDirection.z *= -1;
         //Right
         if (mSceneNode->getPosition().x > 65)
@@ -57,7 +74,7 @@ void Ball::Update(Ogre::Real real)
         if (mSceneNode->getPosition().x < -65)
             mBallDirection.x *= -1;
         //Bottom
-        if (mSceneNode->getPosition().z > 65)
+        if (mSceneNode->getPosition().z > 50)
             mBallDirection.z *= -1;
     }
     else

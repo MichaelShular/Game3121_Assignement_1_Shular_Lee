@@ -13,7 +13,7 @@ public:
 	Ogre::Vector3 GetPosition();
 	void MoveRight();
 	void MoveLeft();
-
+	AxisAlignedBox GetWorldAABB();
 private:
 	SceneManager* mSceneManager;
 	SceneNode* mSceneNode;
