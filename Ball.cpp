@@ -32,6 +32,10 @@ Ogre::Vector3 Ball::GetPosition()
 
 void Ball::Reset()
 {
+    mScore = 0;
+    mNumLife = 5;
+    mStay = true;
+    mBallDirection = Vector3(-1, 0, -1);
 }
 
 int Ball::GetScore()
