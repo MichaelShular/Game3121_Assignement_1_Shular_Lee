@@ -78,6 +78,7 @@ public:
     Updater(Ball* ball, Ogre::SceneNode* camNode, UI* UI)
     {
         _ball = ball;
+        _UI = UI;
         _camNode = camNode;
         _movementspeed = 200.0f;
         _mousespeed = 0.002f;
