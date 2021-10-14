@@ -13,32 +13,80 @@
 #include "OgreFrustum.h"
 #include "Ball.h"
 #include "Paddle.h"
+#include "OgreTrays.h"
 #include <iostream>
+#include <OgreTimer.h>
 
 using namespace Ogre;
 using namespace OgreBites;
+
+class UI 
+{
+private:
+    OgreBites::Label* mLives;
+    OgreBites::Label* mScore;
+    OgreBites::Label* mFrames;
+    OgreBites::Label* mTime;
+public: 
+    UI(TrayManager* mTrayMgr);
+    virtual ~UI() {};
+    void setTime(String a);
+    void setLives(String a);
+    void setScore(String a);
+    void setFrames(String a);
+};
+
+UI::UI(TrayManager* mTrayMgr)
+{
+    mLives = mTrayMgr->createLabel(TL_TOPLEFT, "lives", "Lives: 3", 150);
+    mScore = mTrayMgr->createLabel(TL_TOPLEFT, "score", "Score: 0", 150);
+    mFrames = mTrayMgr->createLabel(TL_TOPRIGHT, "frames", "Frames: ", 150);
+    mTime = mTrayMgr->createLabel(TL_TOPRIGHT, "time", "Time: ", 150);
+}
+
+void UI::setTime(String a)
+{
+    mTime->setCaption(a);
+}
+
+void UI::setLives(String a)
+{
+    mLives->setCaption(a);
+}
+
+void UI::setScore(String a)
+{
+    mScore->setCaption(a);
+}
+
+void UI::setFrames(String a)
+{
+    mFrames->setCaption(a);
+}
 
 class Updater : public Ogre::FrameListener
 {
 private:
     Ogre::SceneNode* _sceneNode;
-    
+    UI* _UI;
     Ball* _ball;
     Ogre::SceneNode* _camNode;
     float _movementspeed;
     float _mousespeed;
 public:
 
-    Updater(Ball* ball, Ogre::SceneNode* camNode)
+    Updater(Ball* ball, Ogre::SceneNode* camNode, UI* UI)
     {
         _ball = ball;
+        _UI = UI;
         _camNode = camNode;
         _movementspeed = 200.0f;
         _mousespeed = 0.002f;
     }
 
     bool frameStarted(const Ogre::FrameEvent& evt)
-    {        
+    {      
+        _UI->setFrames("5");
         _ball->Update(evt.timeSinceLastFrame);
         return true;
     }
@@ -50,21 +98,25 @@ class Game
 {
 private:
     Ogre::FrameListener* FrameListener;
+    OgreBites::TrayListener myTrayListener;
+    OgreBites::TrayManager* mTrayMgr;
     SceneNode* SinbadNode;    
     SceneManager* scnMgr;
     Root* root;
     Paddle* paddle;
     Ball* ball;
-      
+    UI* UILabels;
+    
+    
 public:
     Game();
     virtual ~Game() {}
     void setup();
     bool keyPressed(const KeyboardEvent& evt);
-            
     void createScene();
     void createCamera();
     void createFrameListener();
+    void createTrayListener();
 };
 
 Game::Game()
@@ -91,13 +143,25 @@ void Game::setup()
     shadergen->addSceneManager(scnMgr);
     createScene();    
     createCamera();
+    createTrayListener();
     createFrameListener();
+
+    
 }
 
 void Game::createFrameListener()
 {
-    Ogre::FrameListener* FrameListener = new Updater(ball, SinbadNode);
+    Ogre::FrameListener* FrameListener = new Updater(ball, SinbadNode, UILabels);
     mRoot->addFrameListener(FrameListener);
+}
+
+void Game::createTrayListener()
+{
+    //Adding UI
+    mTrayMgr = new OgreBites::TrayManager("InterfaceName", getRenderWindow());
+    scnMgr->addRenderQueueListener(getOverlaySystem());
+    addInputListener(mTrayMgr); 
+    UILabels = new UI(mTrayMgr);
 }
 
 bool Game::keyPressed(const KeyboardEvent& evt)
@@ -177,8 +241,7 @@ void Game::createScene()
     groundEntity->setCastShadows(false);
     //And finally we need to give our ground a material.
     groundEntity->setMaterialName("Examples/BeachStones");
-    
-     
+
     paddle = new Paddle(scnMgr, SinbadNode);
     ball = new Ball(scnMgr, SinbadNode, paddle);
 }
