@@ -17,11 +17,8 @@ public:
 private:
 	SceneManager* mSceneManager;
 	SceneNode* mSceneNode;
-	Entity* mEntity;
-	int32 mBallSpeed;
-	Vector3 mBallDirection;
-	int mNumLife;
-	bool mStay;
+	Entity* mEntity;	
+	
 };
 
 #endif // !PADDLE_H
