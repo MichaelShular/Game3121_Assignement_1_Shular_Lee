@@ -164,9 +164,13 @@ bool Game::keyPressed(const KeyboardEvent& evt)
     case 100: //ASCII code for "d"
     {
         paddle->MoveRight();
+        
     }
+    break;
     case 32:
         ball->SetStart();
+        break;
+
     default:
         break;
     }

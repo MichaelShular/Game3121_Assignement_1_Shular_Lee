@@ -22,14 +22,16 @@ Ogre::Vector3 Paddle::GetPosition()
 }
 
 void Paddle::MoveRight()
-{
-    // Move Right function
-    mSceneNode->translate(Vector3(0.9, 0.0, 0));    
+{ 
+    // Paddle size Vector3(20, 10, 5)
+    if(mSceneNode->getPosition().x < 65 - 10)
+        mSceneNode->translate(Vector3(0.9, 0.0, 0));    
 }
 
 void Paddle::MoveLeft()
 {
-    mSceneNode->translate(Vector3(-0.9, 0.0, 0));
+    if (mSceneNode->getPosition().x > -65 + 10)
+        mSceneNode->translate(Vector3(-0.9, 0.0, 0));
 }
 
 AxisAlignedBox Paddle::GetWorldAABB()

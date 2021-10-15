@@ -87,13 +87,27 @@ void Ball::Update(Ogre::Real real)
             mSceneNode->translate(mBallDirection * mBallSpeed * real);
             //Top
             if (mSceneNode->getPosition().z < -45)
+            {
                 mBallDirection.z *= -1;
+                mSceneNode->setPosition(
+                    Vector3(mSceneNode->getPosition().x, mSceneNode->getPosition().y, mSceneNode->getPosition().z + mBallSpeed * real));
+                
+            }
             //Right
             if (mSceneNode->getPosition().x > 65)
+            {
                 mBallDirection.x *= -1;
+                mSceneNode->setPosition(
+                    Vector3(mSceneNode->getPosition().x - (mBallSpeed * real), mSceneNode->getPosition().y, mSceneNode->getPosition().z));
+            }
+                
             //Left
             if (mSceneNode->getPosition().x < -65)
+            {
+                mSceneNode->setPosition(
+                    Vector3(mSceneNode->getPosition().x + (mBallSpeed * real), mSceneNode->getPosition().y, mSceneNode->getPosition().z));
                 mBallDirection.x *= -1;
+            }
             //Bottom
             if (mSceneNode->getPosition().z > 50)
             {
