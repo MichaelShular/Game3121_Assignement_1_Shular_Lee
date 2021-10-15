@@ -1,0 +1,157 @@
+\hypertarget{class_u_i}{}\doxysection{UI Class Reference}
+\label{class_u_i}\index{UI@{UI}}
+
+
+Is a class that for the creation and management of \mbox{\hyperlink{class_u_i}{UI}}.  
+
+
+
+
+{\ttfamily \#include $<$UI.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_u_i_a6b6fb94416edff2c311111edf419c3d2}{UI}} (Tray\+Manager $\ast$Tray\+Mgr, Tray\+Manager $\ast$Button\+Tray\+Mgr)
+\begin{DoxyCompactList}\small\item\em The defualt conconstructor used for creation of all widgets in scene. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_u_i_a47e7b6111faba049dfee4738d067cc42}{$\sim$\+UI}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_u_i}{UI}} destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_i_a8d273bf9054fe4c1dd76ae7014947017}{set\+Time}} (String a)
+\begin{DoxyCompactList}\small\item\em Used to change time label text. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_i_ac7e2267fd42fe58665b5a57b0e58ac97}{set\+Lives}} (String a)
+\begin{DoxyCompactList}\small\item\em Used to change Lives label text. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_i_a162326a2616b53a3b0c801a02e9e5ad2}{set\+Score}} (String a)
+\begin{DoxyCompactList}\small\item\em Used to change score label text. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_i_a67eef52ce80622d11ae767ad02db3fba}{show\+Reset\+Button}} ()
+\begin{DoxyCompactList}\small\item\em Used to hide tray holding reset button. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_i_aabb754dcadccf088372775388bd6fc2b}{hide\+Reset\+Button}} ()
+\begin{DoxyCompactList}\small\item\em Used to show tray holding reset button. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_u_i_a66e09f37b7b830c5a5a4b48023f1578d}{get\+Reset}} ()
+\begin{DoxyCompactList}\small\item\em Used to check if reset button is pressed or not. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Is a class that for the creation and management of \mbox{\hyperlink{class_u_i}{UI}}. 
+
+This class creates all \mbox{\hyperlink{class_u_i}{UI}} for in the scene with in the scene in the default constructor and uses its frunctions to control aspect text or visibility. ~\newline
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_u_i_a6b6fb94416edff2c311111edf419c3d2}\label{class_u_i_a6b6fb94416edff2c311111edf419c3d2}} 
+\index{UI@{UI}!UI@{UI}}
+\index{UI@{UI}!UI@{UI}}
+\doxysubsubsection{\texorpdfstring{UI()}{UI()}}
+{\footnotesize\ttfamily UI\+::\+UI (\begin{DoxyParamCaption}\item[{Tray\+Manager $\ast$}]{Tray\+Mgr,  }\item[{Tray\+Manager $\ast$}]{Button\+Tray\+Mgr }\end{DoxyParamCaption})}
+
+
+
+The defualt conconstructor used for creation of all widgets in scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Tray\+Mgr} & Tray manager for labels in the scene. \\
+\hline
+{\em Button\+Tray\+Mgr} & Tray manager for buttons in the scene. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+\+: Two tray managers need to be used because if widgets are hidden the transparent tray is still visable. Instead the entire tray is hidden. ~\newline
+ 
+\end{DoxyNote}
+\mbox{\Hypertarget{class_u_i_a47e7b6111faba049dfee4738d067cc42}\label{class_u_i_a47e7b6111faba049dfee4738d067cc42}} 
+\index{UI@{UI}!````~UI@{$\sim$UI}}
+\index{````~UI@{$\sim$UI}!UI@{UI}}
+\doxysubsubsection{\texorpdfstring{$\sim$UI()}{~UI()}}
+{\footnotesize\ttfamily virtual UI\+::$\sim$\+UI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_u_i}{UI}} destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_u_i_a66e09f37b7b830c5a5a4b48023f1578d}\label{class_u_i_a66e09f37b7b830c5a5a4b48023f1578d}} 
+\index{UI@{UI}!getReset@{getReset}}
+\index{getReset@{getReset}!UI@{UI}}
+\doxysubsubsection{\texorpdfstring{getReset()}{getReset()}}
+{\footnotesize\ttfamily bool UI\+::get\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Used to check if reset button is pressed or not. 
+
+checks the state of the reset button to see if button is pressed \begin{DoxyReturn}{Returns}
+bool if button is pressed down 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_u_i_aabb754dcadccf088372775388bd6fc2b}\label{class_u_i_aabb754dcadccf088372775388bd6fc2b}} 
+\index{UI@{UI}!hideResetButton@{hideResetButton}}
+\index{hideResetButton@{hideResetButton}!UI@{UI}}
+\doxysubsubsection{\texorpdfstring{hideResetButton()}{hideResetButton()}}
+{\footnotesize\ttfamily void UI\+::hide\+Reset\+Button (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Used to show tray holding reset button. 
+
+\mbox{\Hypertarget{class_u_i_ac7e2267fd42fe58665b5a57b0e58ac97}\label{class_u_i_ac7e2267fd42fe58665b5a57b0e58ac97}} 
+\index{UI@{UI}!setLives@{setLives}}
+\index{setLives@{setLives}!UI@{UI}}
+\doxysubsubsection{\texorpdfstring{setLives()}{setLives()}}
+{\footnotesize\ttfamily void UI\+::set\+Lives (\begin{DoxyParamCaption}\item[{String}]{a }\end{DoxyParamCaption})}
+
+
+
+Used to change Lives label text. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Takes in a string to change text. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_u_i_a162326a2616b53a3b0c801a02e9e5ad2}\label{class_u_i_a162326a2616b53a3b0c801a02e9e5ad2}} 
+\index{UI@{UI}!setScore@{setScore}}
+\index{setScore@{setScore}!UI@{UI}}
+\doxysubsubsection{\texorpdfstring{setScore()}{setScore()}}
+{\footnotesize\ttfamily void UI\+::set\+Score (\begin{DoxyParamCaption}\item[{String}]{a }\end{DoxyParamCaption})}
+
+
+
+Used to change score label text. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Takes in a string to change text. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_u_i_a8d273bf9054fe4c1dd76ae7014947017}\label{class_u_i_a8d273bf9054fe4c1dd76ae7014947017}} 
+\index{UI@{UI}!setTime@{setTime}}
+\index{setTime@{setTime}!UI@{UI}}
+\doxysubsubsection{\texorpdfstring{setTime()}{setTime()}}
+{\footnotesize\ttfamily void UI\+::set\+Time (\begin{DoxyParamCaption}\item[{String}]{a }\end{DoxyParamCaption})}
+
+
+
+Used to change time label text. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Takes in a string to change text. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_u_i_a67eef52ce80622d11ae767ad02db3fba}\label{class_u_i_a67eef52ce80622d11ae767ad02db3fba}} 
+\index{UI@{UI}!showResetButton@{showResetButton}}
+\index{showResetButton@{showResetButton}!UI@{UI}}
+\doxysubsubsection{\texorpdfstring{showResetButton()}{showResetButton()}}
+{\footnotesize\ttfamily void UI\+::show\+Reset\+Button (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Used to hide tray holding reset button. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_u_i_8h}{UI.\+h}}\item 
+\mbox{\hyperlink{_u_i_8cpp}{UI.\+cpp}}\end{DoxyCompactItemize}

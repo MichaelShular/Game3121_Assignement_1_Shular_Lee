@@ -1,0 +1,164 @@
+\hypertarget{class_ball}{}\doxysection{Ball Class Reference}
+\label{class_ball}\index{Ball@{Ball}}
+
+
+This class is used to create and control aspects the object ball.  
+
+
+
+
+{\ttfamily \#include $<$Ball.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ball_a5f0d85fbfcab26e6e48287d12d410cc1}{Ball}} (Ogre\+::\+Scene\+Manager $\ast$sc\+Mgr, Scene\+Node $\ast$Scene\+Node, \mbox{\hyperlink{class_paddle}{Paddle}} $\ast$pad)
+\begin{DoxyCompactList}\small\item\em The defualt conconstructor used for setting defualt settings of the ball object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ball_a20f2f6ac0bf648f406a8e12e63429fcd}{$\sim$\+Ball}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_ball}{Ball}} destructor. \end{DoxyCompactList}\item 
+Ogre\+::\+Vector3 \mbox{\hyperlink{class_ball_a7e710c7626db280ae446129cd8c56b87}{Get\+Position}} ()
+\begin{DoxyCompactList}\small\item\em Used to get the position of the ball. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ball_ab16d8f8c98ddd13ed0350d40cf8e104e}{Reset}} ()
+\begin{DoxyCompactList}\small\item\em Used to reset aspects of the game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ball_a16ba485e3355c6643bf1be1593842022}{Remove\+Life}} ()
+\begin{DoxyCompactList}\small\item\em Used to decrease the amount of lives left. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_ball_a966ff02758af4e984222f1e8ec524f0a}{get\+Number\+Of\+Life}} ()
+\begin{DoxyCompactList}\small\item\em Used to get the player\textquotesingle{}s current amount of lives. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ball_a3324b704ae134934653890092f4425cb}{Update}} (Ogre\+::\+Real real)
+\begin{DoxyCompactList}\small\item\em Controls how the ball updates each frame. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_ball_a1b48457bb5a539fdda13b8cea12dadd6}{Get\+Score}} ()
+\begin{DoxyCompactList}\small\item\em Used to get the game\textquotesingle{}s current score. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ball_aece60e6a7ddfc205ba3bad924bd69ccc}{Set\+Start}} ()
+\begin{DoxyCompactList}\small\item\em Used to set state of ball to false. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class is used to create and control aspects the object ball. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_ball_a5f0d85fbfcab26e6e48287d12d410cc1}\label{class_ball_a5f0d85fbfcab26e6e48287d12d410cc1}} 
+\index{Ball@{Ball}!Ball@{Ball}}
+\index{Ball@{Ball}!Ball@{Ball}}
+\doxysubsubsection{\texorpdfstring{Ball()}{Ball()}}
+{\footnotesize\ttfamily Ball\+::\+Ball (\begin{DoxyParamCaption}\item[{Ogre\+::\+Scene\+Manager $\ast$}]{sc\+Mgr,  }\item[{Scene\+Node $\ast$}]{Scene\+Node,  }\item[{\mbox{\hyperlink{class_paddle}{Paddle}} $\ast$}]{\+\_\+pad }\end{DoxyParamCaption})}
+
+
+
+The defualt conconstructor used for setting defualt settings of the ball object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & a Scene\+Manager \\
+\hline
+{\em } & a Scene\+Node \\
+\hline
+{\em } & a paddle class object ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ball_a20f2f6ac0bf648f406a8e12e63429fcd}\label{class_ball_a20f2f6ac0bf648f406a8e12e63429fcd}} 
+\index{Ball@{Ball}!````~Ball@{$\sim$Ball}}
+\index{````~Ball@{$\sim$Ball}!Ball@{Ball}}
+\doxysubsubsection{\texorpdfstring{$\sim$Ball()}{~Ball()}}
+{\footnotesize\ttfamily Ball\+::$\sim$\+Ball (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_ball}{Ball}} destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ball_a966ff02758af4e984222f1e8ec524f0a}\label{class_ball_a966ff02758af4e984222f1e8ec524f0a}} 
+\index{Ball@{Ball}!getNumberOfLife@{getNumberOfLife}}
+\index{getNumberOfLife@{getNumberOfLife}!Ball@{Ball}}
+\doxysubsubsection{\texorpdfstring{getNumberOfLife()}{getNumberOfLife()}}
+{\footnotesize\ttfamily int Ball\+::get\+Number\+Of\+Life (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Used to get the player\textquotesingle{}s current amount of lives. 
+
+\begin{DoxyReturn}{Returns}
+a int which is the current amount of lives that the player has. ~\newline
+ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ball_a7e710c7626db280ae446129cd8c56b87}\label{class_ball_a7e710c7626db280ae446129cd8c56b87}} 
+\index{Ball@{Ball}!GetPosition@{GetPosition}}
+\index{GetPosition@{GetPosition}!Ball@{Ball}}
+\doxysubsubsection{\texorpdfstring{GetPosition()}{GetPosition()}}
+{\footnotesize\ttfamily Ogre\+::\+Vector3 Ball\+::\+Get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Used to get the position of the ball. 
+
+\begin{DoxyReturn}{Returns}
+a vector3. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ball_a1b48457bb5a539fdda13b8cea12dadd6}\label{class_ball_a1b48457bb5a539fdda13b8cea12dadd6}} 
+\index{Ball@{Ball}!GetScore@{GetScore}}
+\index{GetScore@{GetScore}!Ball@{Ball}}
+\doxysubsubsection{\texorpdfstring{GetScore()}{GetScore()}}
+{\footnotesize\ttfamily int Ball\+::\+Get\+Score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Used to get the game\textquotesingle{}s current score. 
+
+\begin{DoxyReturn}{Returns}
+a int which is the current score of the game. ~\newline
+ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ball_a16ba485e3355c6643bf1be1593842022}\label{class_ball_a16ba485e3355c6643bf1be1593842022}} 
+\index{Ball@{Ball}!RemoveLife@{RemoveLife}}
+\index{RemoveLife@{RemoveLife}!Ball@{Ball}}
+\doxysubsubsection{\texorpdfstring{RemoveLife()}{RemoveLife()}}
+{\footnotesize\ttfamily void Ball\+::\+Remove\+Life (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Used to decrease the amount of lives left. 
+
+\mbox{\Hypertarget{class_ball_ab16d8f8c98ddd13ed0350d40cf8e104e}\label{class_ball_ab16d8f8c98ddd13ed0350d40cf8e104e}} 
+\index{Ball@{Ball}!Reset@{Reset}}
+\index{Reset@{Reset}!Ball@{Ball}}
+\doxysubsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily void Ball\+::\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Used to reset aspects of the game. 
+
+Resets the score, number of lives, set balls position above paddle and the direction of ball. \mbox{\Hypertarget{class_ball_aece60e6a7ddfc205ba3bad924bd69ccc}\label{class_ball_aece60e6a7ddfc205ba3bad924bd69ccc}} 
+\index{Ball@{Ball}!SetStart@{SetStart}}
+\index{SetStart@{SetStart}!Ball@{Ball}}
+\doxysubsubsection{\texorpdfstring{SetStart()}{SetStart()}}
+{\footnotesize\ttfamily void Ball\+::\+Set\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Used to set state of ball to false. 
+
+This bool is used to allow the if statement in update to allow movment. ~\newline
+ \mbox{\Hypertarget{class_ball_a3324b704ae134934653890092f4425cb}\label{class_ball_a3324b704ae134934653890092f4425cb}} 
+\index{Ball@{Ball}!Update@{Update}}
+\index{Update@{Update}!Ball@{Ball}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Ball\+::\+Update (\begin{DoxyParamCaption}\item[{Ogre\+::\+Real}]{real }\end{DoxyParamCaption})}
+
+
+
+Controls how the ball updates each frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_ball_8h}{Ball.\+h}}\item 
+\mbox{\hyperlink{_ball_8cpp}{Ball.\+cpp}}\end{DoxyCompactItemize}

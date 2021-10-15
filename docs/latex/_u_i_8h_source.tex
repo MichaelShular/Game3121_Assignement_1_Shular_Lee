@@ -1,0 +1,35 @@
+\hypertarget{_u_i_8h_source}{}\doxysection{UI.\+h}
+\mbox{\hyperlink{_u_i_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#ifndef UI\_H}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#define UI\_H}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}Ogre.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}OgreTrays.h"{}}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{using namespace }Ogre;}
+\DoxyCodeLine{9 \textcolor{keyword}{using namespace }OgreBites;}
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{class_u_i}{UI}}}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16 \textcolor{keyword}{private}:}
+\DoxyCodeLine{17     TrayManager* mTrayMgr;}
+\DoxyCodeLine{18     TrayManager* mButtonTrayMgr;}
+\DoxyCodeLine{19     OgreBites::Label* mLives;}
+\DoxyCodeLine{20     OgreBites::Label* mScore;}
+\DoxyCodeLine{21     OgreBites::Label* mTime;}
+\DoxyCodeLine{22     OgreBites::Button* mReset;}
+\DoxyCodeLine{23 \textcolor{keyword}{public}:}
+\DoxyCodeLine{24     \mbox{\hyperlink{class_u_i_a6b6fb94416edff2c311111edf419c3d2}{UI}}(TrayManager* TrayMgr, TrayManager* ButtonTrayMgr);}
+\DoxyCodeLine{26     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_u_i_a47e7b6111faba049dfee4738d067cc42}{\string~UI}}() \{\};}
+\DoxyCodeLine{27     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_u_i_a8d273bf9054fe4c1dd76ae7014947017}{setTime}}(String a);}
+\DoxyCodeLine{28     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_u_i_ac7e2267fd42fe58665b5a57b0e58ac97}{setLives}}(String a);}
+\DoxyCodeLine{29     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_u_i_a162326a2616b53a3b0c801a02e9e5ad2}{setScore}}(String a);}
+\DoxyCodeLine{30     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_u_i_a67eef52ce80622d11ae767ad02db3fba}{showResetButton}}();}
+\DoxyCodeLine{31     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_u_i_aabb754dcadccf088372775388bd6fc2b}{hideResetButton}}();}
+\DoxyCodeLine{32     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_u_i_a66e09f37b7b830c5a5a4b48023f1578d}{getReset}}();}
+\DoxyCodeLine{33 \};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#endif }}
+
+\end{DoxyCode}

@@ -1,0 +1,116 @@
+\hypertarget{class_paddle}{}\doxysection{Paddle Class Reference}
+\label{class_paddle}\index{Paddle@{Paddle}}
+
+
+This class is used to create and control aspects the object paddle.  
+
+
+
+
+{\ttfamily \#include $<$Paddle.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_paddle_aa88dbc66ed2410fb0dd80809cd7f5923}{Paddle}} (Ogre\+::\+Scene\+Manager $\ast$sc\+Mgr, Scene\+Node $\ast$Scene\+Node)
+\begin{DoxyCompactList}\small\item\em The defualt conconstructor used for setting default settings for paddle object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_paddle_ac03c6b92f0b9cd2e67edff4c318ad030}{$\sim$\+Paddle}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_paddle}{Paddle}} destructor. \end{DoxyCompactList}\item 
+Ogre\+::\+Vector3 \mbox{\hyperlink{class_paddle_a58b9d7abbe9b595c6140a33001764f16}{Get\+Position}} ()
+\begin{DoxyCompactList}\small\item\em Used to get the position of the paddle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_paddle_a2a09c5e4ea6bdd88da8626375df1bee0}{Move\+Right}} ()
+\begin{DoxyCompactList}\small\item\em Moves the paddle to the right. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_paddle_a3532e4cf3398e85d142647fd30681071}{Move\+Left}} ()
+\begin{DoxyCompactList}\small\item\em Moves the paddle to the left. \end{DoxyCompactList}\item 
+Axis\+Aligned\+Box \mbox{\hyperlink{class_paddle_ac1cf36296a2c4aa15d2160dafcf5b137}{Get\+World\+AABB}} ()
+\begin{DoxyCompactList}\small\item\em Get \mbox{\hyperlink{class_paddle}{Paddle}}\textquotesingle{}s world AABB box. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class is used to create and control aspects the object paddle. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_paddle_aa88dbc66ed2410fb0dd80809cd7f5923}\label{class_paddle_aa88dbc66ed2410fb0dd80809cd7f5923}} 
+\index{Paddle@{Paddle}!Paddle@{Paddle}}
+\index{Paddle@{Paddle}!Paddle@{Paddle}}
+\doxysubsubsection{\texorpdfstring{Paddle()}{Paddle()}}
+{\footnotesize\ttfamily Paddle\+::\+Paddle (\begin{DoxyParamCaption}\item[{Ogre\+::\+Scene\+Manager $\ast$}]{sc\+Mgr,  }\item[{Scene\+Node $\ast$}]{Scene\+Node }\end{DoxyParamCaption})}
+
+
+
+The defualt conconstructor used for setting default settings for paddle object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & a Scene\+Manager \\
+\hline
+{\em } & a Scene\+Node \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_paddle_ac03c6b92f0b9cd2e67edff4c318ad030}\label{class_paddle_ac03c6b92f0b9cd2e67edff4c318ad030}} 
+\index{Paddle@{Paddle}!````~Paddle@{$\sim$Paddle}}
+\index{````~Paddle@{$\sim$Paddle}!Paddle@{Paddle}}
+\doxysubsubsection{\texorpdfstring{$\sim$Paddle()}{~Paddle()}}
+{\footnotesize\ttfamily Paddle\+::$\sim$\+Paddle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_paddle}{Paddle}} destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_paddle_a58b9d7abbe9b595c6140a33001764f16}\label{class_paddle_a58b9d7abbe9b595c6140a33001764f16}} 
+\index{Paddle@{Paddle}!GetPosition@{GetPosition}}
+\index{GetPosition@{GetPosition}!Paddle@{Paddle}}
+\doxysubsubsection{\texorpdfstring{GetPosition()}{GetPosition()}}
+{\footnotesize\ttfamily Ogre\+::\+Vector3 Paddle\+::\+Get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Used to get the position of the paddle. 
+
+\begin{DoxyReturn}{Returns}
+a vector3. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_paddle_ac1cf36296a2c4aa15d2160dafcf5b137}\label{class_paddle_ac1cf36296a2c4aa15d2160dafcf5b137}} 
+\index{Paddle@{Paddle}!GetWorldAABB@{GetWorldAABB}}
+\index{GetWorldAABB@{GetWorldAABB}!Paddle@{Paddle}}
+\doxysubsubsection{\texorpdfstring{GetWorldAABB()}{GetWorldAABB()}}
+{\footnotesize\ttfamily Axis\+Aligned\+Box Paddle\+::\+Get\+World\+AABB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get \mbox{\hyperlink{class_paddle}{Paddle}}\textquotesingle{}s world AABB box. 
+
+The \mbox{\hyperlink{class_paddle}{Paddle}}\textquotesingle{}s AABB box will be used to check if it collides with the \mbox{\hyperlink{class_ball}{Ball}}\textquotesingle{}s AABB box. \begin{DoxyReturn}{Returns}
+Paddles\textquotesingle{}s world AABB box. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_paddle_a3532e4cf3398e85d142647fd30681071}\label{class_paddle_a3532e4cf3398e85d142647fd30681071}} 
+\index{Paddle@{Paddle}!MoveLeft@{MoveLeft}}
+\index{MoveLeft@{MoveLeft}!Paddle@{Paddle}}
+\doxysubsubsection{\texorpdfstring{MoveLeft()}{MoveLeft()}}
+{\footnotesize\ttfamily void Paddle\+::\+Move\+Left (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Moves the paddle to the left. 
+
+First checks if the player is greater then certian X postion and if it\textquotesingle{}s true allow to translate left. ~\newline
+ \mbox{\Hypertarget{class_paddle_a2a09c5e4ea6bdd88da8626375df1bee0}\label{class_paddle_a2a09c5e4ea6bdd88da8626375df1bee0}} 
+\index{Paddle@{Paddle}!MoveRight@{MoveRight}}
+\index{MoveRight@{MoveRight}!Paddle@{Paddle}}
+\doxysubsubsection{\texorpdfstring{MoveRight()}{MoveRight()}}
+{\footnotesize\ttfamily void Paddle\+::\+Move\+Right (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Moves the paddle to the right. 
+
+First checks if the player is less then certian X postion and if it\textquotesingle{}s true allow to translate right. ~\newline
+ 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_paddle_8h}{Paddle.\+h}}\item 
+\mbox{\hyperlink{_paddle_8cpp}{Paddle.\+cpp}}\end{DoxyCompactItemize}

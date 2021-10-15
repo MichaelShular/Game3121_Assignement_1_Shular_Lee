@@ -1,0 +1,71 @@
+\hypertarget{class_updater}{}\doxysection{Updater Class Reference}
+\label{class_updater}\index{Updater@{Updater}}
+
+
+This class is used to control what changes each frame.  
+
+
+Inheritance diagram for Updater\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_updater}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_updater_aa97f898e5fd82b6da8f2a5b2214a6f9a}{Updater}} (\mbox{\hyperlink{class_ball}{Ball}} $\ast$ball, Ogre\+::\+Scene\+Node $\ast$cam\+Node, \mbox{\hyperlink{class_u_i}{UI}} $\ast$UIElements)
+\begin{DoxyCompactList}\small\item\em Default Updator constructor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_updater_a98a821886f80c4cc5bdec2452444d714}{frame\+Started}} (const Ogre\+::\+Frame\+Event \&evt)
+\begin{DoxyCompactList}\small\item\em The function which controls what happens each frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class is used to control what changes each frame. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_updater_aa97f898e5fd82b6da8f2a5b2214a6f9a}\label{class_updater_aa97f898e5fd82b6da8f2a5b2214a6f9a}} 
+\index{Updater@{Updater}!Updater@{Updater}}
+\index{Updater@{Updater}!Updater@{Updater}}
+\doxysubsubsection{\texorpdfstring{Updater()}{Updater()}}
+{\footnotesize\ttfamily Updater\+::\+Updater (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ball}{Ball}} $\ast$}]{ball,  }\item[{Ogre\+::\+Scene\+Node $\ast$}]{cam\+Node,  }\item[{\mbox{\hyperlink{class_u_i}{UI}} $\ast$}]{UIElements }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default Updator constructor. 
+
+Used to pass objects that will need to update. 
+\begin{DoxyParams}{Parameters}
+{\em } & ball class object \\
+\hline
+{\em } & defualt camera object \\
+\hline
+{\em } & \mbox{\hyperlink{class_u_i}{UI}} class object \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_updater_a98a821886f80c4cc5bdec2452444d714}\label{class_updater_a98a821886f80c4cc5bdec2452444d714}} 
+\index{Updater@{Updater}!frameStarted@{frameStarted}}
+\index{frameStarted@{frameStarted}!Updater@{Updater}}
+\doxysubsubsection{\texorpdfstring{frameStarted()}{frameStarted()}}
+{\footnotesize\ttfamily bool Updater\+::frame\+Started (\begin{DoxyParamCaption}\item[{const Ogre\+::\+Frame\+Event \&}]{evt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The function which controls what happens each frame. 
+
+Updates the ball, \mbox{\hyperlink{class_u_i}{UI}} elements and check to see of game has ended 
+\begin{DoxyParams}{Parameters}
+{\em } & a Frame\+Event, which is passed onto ball \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: a bool. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_assignment__1___shular_lee_8cpp}{Assignment\+\_\+1\+\_\+\+Shular\+Lee.\+cpp}}\end{DoxyCompactItemize}
