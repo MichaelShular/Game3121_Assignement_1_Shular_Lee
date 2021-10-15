@@ -1,5 +1,11 @@
 #include "Ball.h"
 #include <iostream>
+
+/// The defualt conconstructor used for
+/// 
+/// @param:
+/// @param:
+/// @param:
 Ball::Ball(Ogre::SceneManager* scMgr, SceneNode* SceneNode, Paddle* _pad)
 {
     mScore = 0;
@@ -21,15 +27,17 @@ Ball::Ball(Ogre::SceneManager* scMgr, SceneNode* SceneNode, Paddle* _pad)
     mSceneNode->_getWorldAABB();
 }
 
-Ball::~Ball()
-{
-}
-
+/// Used to get the position of the ball.
+/// 
+/// @returns a vector3.
 Ogre::Vector3 Ball::GetPosition()
 {
 	return Ogre::Vector3();
 }
 
+/// Used to reset aspects of the game. 
+/// 
+/// Resets the score, number of lives, set balls position above paddle and the direction of ball.
 void Ball::Reset()
 {
     mScore = 0;
@@ -38,6 +46,9 @@ void Ball::Reset()
     mBallDirection = Vector3(-1, 0, -1);
 }
 
+/// Used to get the game's current score. 
+/// 
+/// @returns a int which is the current score of the game.  
 int Ball::GetScore()
 {
     return mScore;
@@ -48,16 +59,24 @@ void Ball::SetStart()
     mStay = false;
 }
 
+/// Used to decrease the amount of lives left.
 void Ball::RemoveLife()
 {
     --mNumLife;
 }
 
+/// Used to get the player's current amount of lives. 
+/// 
+/// @returns a int which is the current amount of lives that the player has. 
 int Ball::getNumberOfLife()
 {
     return mNumLife;
 }
 
+/// Controls how the ball updates each frame.
+/// 
+/// 
+/// @param:
 void Ball::Update(Ogre::Real real)
 {
     if (mNumLife <= 0)

@@ -6,11 +6,12 @@
 #include "Paddle.h"
 
 using namespace Ogre;
-
+/// This class is used to create and control aspects the object ball.
 class Ball {
 public:
 	Ball(Ogre::SceneManager* scMgr, SceneNode* SceneNode, Paddle* pad);
-	~Ball();
+	/// Ball destructor.
+	~Ball() {};
 	Ogre::Vector3 GetPosition();
 	void Reset();
 	void RemoveLife();	
@@ -18,9 +19,6 @@ public:
 	void Update(Ogre::Real real);	
 	int GetScore();
 	void SetStart();
-	void Moving();
-	
-	
 private:
 	Paddle* pad;
 	SceneManager* mSceneManager;

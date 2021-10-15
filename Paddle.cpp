@@ -1,5 +1,11 @@
 #include "Paddle.h"
 #include <iostream>
+
+
+/// The defualt conconstructor used for
+/// 
+/// @param:
+/// @param:
 Paddle::Paddle(Ogre::SceneManager* scMgr, SceneNode* SceneNode)
 {
     this->mSceneManager = scMgr;
@@ -14,13 +20,19 @@ Paddle::Paddle(Ogre::SceneManager* scMgr, SceneNode* SceneNode)
     mSceneNode->getShowBoundingBox();    
     mSceneNode->_getWorldAABB();
 }
+/// Used to get the position of the paddle.
+/// 
+/// @returns a vector3.
 
 Ogre::Vector3 Paddle::GetPosition()
 {
-    //Return the world position to ball
     return mSceneNode->getPosition();
 }
 
+/// Moves the paddle to the right.
+/// 
+/// First checks if the player is less then certian X postion and if it's true allow
+/// to translate right. 
 void Paddle::MoveRight()
 { 
     // Paddle size Vector3(20, 10, 5)
@@ -28,14 +40,21 @@ void Paddle::MoveRight()
         mSceneNode->translate(Vector3(0.9, 0.0, 0));    
 }
 
+/// Moves the paddle to the left.
+/// 
+/// First checks if the player is greater then certian X postion and if it's true allow
+/// to translate left. 
 void Paddle::MoveLeft()
 {
     if (mSceneNode->getPosition().x > -65 + 10)
         mSceneNode->translate(Vector3(-0.9, 0.0, 0));
 }
 
+/// Get Paddle's world AABB box. 
+/// 
+/// The Paddle's AABB box will be used to check if it collides with the Ball's AABB box.
+/// @returns Paddles's world AABB box.
 AxisAlignedBox Paddle::GetWorldAABB()
 {
-    //Return the World AABB and ball will check collision between ball aabbb and paddle aabb
     return mSceneNode->_getWorldAABB();
 }

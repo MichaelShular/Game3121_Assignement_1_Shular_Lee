@@ -5,11 +5,12 @@
 #include "Ogre.h"
 
 using namespace Ogre;
-
+/// This class is used to create and control aspects the object paddle.
 class Paddle {
 public:
 	Paddle(Ogre::SceneManager* scMgr, SceneNode* SceneNode);
-	~Paddle();
+	/// Paddle destructor.
+	~Paddle() {};
 	Ogre::Vector3 GetPosition();
 	void MoveRight();
 	void MoveLeft();
@@ -18,7 +19,6 @@ private:
 	SceneManager* mSceneManager;
 	SceneNode* mSceneNode;
 	Entity* mEntity;	
-	
 };
 
 #endif // !PADDLE_H

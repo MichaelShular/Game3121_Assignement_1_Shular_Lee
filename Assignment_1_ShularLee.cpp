@@ -17,11 +17,9 @@
 #include "Paddle.h"
 #include "UI.h"
 
-
-
 using namespace Ogre;
 using namespace OgreBites;
-
+/// This class is used to control what changes each frame.
 class Updater : public Ogre::FrameListener
 {
 private:
@@ -67,7 +65,6 @@ public:
             _UIElements->setTime(Ogre::StringConverter::toString(timer.getMilliseconds() / 1000));
             mPausedTime = timer.getMilliseconds() / 1000;
         }
-
         return true;
     }
 };
@@ -87,8 +84,6 @@ private:
     Paddle* paddle;
     Ball* ball;
     UI* UIElements;
-    
-    
 public:
     Game();
     virtual ~Game() {}
@@ -104,8 +99,6 @@ Game::Game()
     : ApplicationContext("week3-5-FrameListenerDemo")
 {
 }
-
-Ogre::Real x = 0.0, y = 0.0, z = 0.0;
 
 void Game::setup()
 {

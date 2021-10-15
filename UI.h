@@ -7,7 +7,10 @@
 
 using namespace Ogre;
 using namespace OgreBites;
-
+/// Is a class that for the creation and management of UI. 
+/// 
+/// This class creates all UI for in the scene with in the scene in the default constructor and
+/// uses its frunctions to control aspect text or visibility. 
 class UI
 {
 private:
@@ -19,6 +22,7 @@ private:
     OgreBites::Button* mReset;
 public:
     UI(TrayManager* TrayMgr, TrayManager* ButtonTrayMgr);
+    /// UI destructor.
     virtual ~UI() {};
     void setTime(String a);
     void setLives(String a);
