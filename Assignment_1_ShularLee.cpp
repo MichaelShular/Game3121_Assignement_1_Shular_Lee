@@ -1,9 +1,7 @@
 //Assignment_1_ShularLee
-//You should see the same scene as seen earlier,
-//but this time, the instance of Sinbad moves right and you can't move the camera or
-//close the application with the Escape key.To close the application, click the X button
-//on the console windows, or if you started the application from a console, you can
-//use CTRL + C.
+//Michael Shular 101273089
+//Daekoen Lee 101076401
+
 
 #include <iostream>
 #include "Ogre.h"
