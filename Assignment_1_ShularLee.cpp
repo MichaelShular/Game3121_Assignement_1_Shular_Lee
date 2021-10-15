@@ -33,16 +33,26 @@ private:
     float mPausedTime;
 public:
 
+    /// Default Updator constructor.
+    /// 
+    /// Used to pass objects that will need to update.
+    /// @param: ball class object
+    /// @param: defualt camera object
+    /// @param: UI class object
     Updater(Ball* ball, Ogre::SceneNode* camNode, UI* UIElements)
     {
         _ball = ball;
         _UIElements = UIElements;
         _camNode = camNode;
         _movementspeed = 200.0f;
-        _mousespeed = 0.002f;
-        
+        _mousespeed = 0.002f;   
     }
 
+    /// The function which controls what happens each frame. 
+    /// 
+    /// Updates the ball, UI elements and check to see of game has ended
+    /// @param: a FrameEvent, which is passed onto ball
+    /// @returns: a bool.
     bool frameStarted(const Ogre::FrameEvent& evt)
     {      
         _ball->Update(evt.timeSinceLastFrame);
@@ -68,7 +78,7 @@ public:
         return true;
     }
 };
-
+/// This class is used to create control main aspects of the game.
 class Game
     : public ApplicationContext
     , public InputListener
@@ -86,6 +96,7 @@ private:
     UI* UIElements;
 public:
     Game();
+    /// Game destructor.
     virtual ~Game() {}
     void setup();
     bool keyPressed(const KeyboardEvent& evt);
@@ -95,11 +106,21 @@ public:
     void createTrayListener();
 };
 
+/// Defualt Game constructor 
 Game::Game()
     : ApplicationContext("week3-5-FrameListenerDemo")
 {
 }
 
+/// Initialize everything required to start game before updating
+/// 
+/// Currently sets up 
+/// -makes for for application
+/// -creates one scene for game
+/// -adds camra to scene
+/// -adds shader generation to scene
+/// -adds trays to scene
+/// -adds updator to scene 
 void Game::setup()
 {
     // do not forget to call the base first
@@ -110,8 +131,6 @@ void Game::setup()
     root = getRoot();    
     scnMgr = root->createSceneManager();
     
-    /*framelistener = new FrameListener();
-    root->addFrameListener(framelistener);*/
     // register our scene with the RTSS
     RTShader::ShaderGenerator* shadergen = RTShader::ShaderGenerator::getSingletonPtr();
     shadergen->addSceneManager(scnMgr);
@@ -121,30 +140,40 @@ void Game::setup()
     createFrameListener();
 }
 
+/// Used to initialize the Updater class.
 void Game::createFrameListener()
 {
     Ogre::FrameListener* FrameListener = new Updater(ball, SinbadNode, UIElements);
     mRoot->addFrameListener(FrameListener);
 }
 
+/// Used to initialize the UI class and create all trays in the scene.
 void Game::createTrayListener()
 {
-    //Adding UI for
+    //Adding tray for lables
     mTrayMgr = new OgreBites::TrayManager("InterfaceName", getRenderWindow());
     scnMgr->addRenderQueueListener(getOverlaySystem());
     addInputListener(mTrayMgr); 
-
+    //Adding tray for buttons
     mButtonTrayMgr = new OgreBites::TrayManager("ButtonInterface", getRenderWindow());
     scnMgr->addRenderQueueListener(getOverlaySystem());
     addInputListener(mButtonTrayMgr);
-
+    //creating UI class
     UIElements = new UI(mTrayMgr, mButtonTrayMgr);
 }
 
+/// Used to control keyboard events.
+/// 
+/// Currently listens for 
+/// Esc: Quit application 
+/// A: player moves to left 
+/// D: player moves to right 
+/// Spacebar: starts the ball movement  
+/// @param: takes in OgreBites::KeyboardEvent Struct.  
+/// @returns: a bool.
 bool Game::keyPressed(const KeyboardEvent& evt)
 {
     switch (evt.keysym.sym)
-
     {
     case SDLK_ESCAPE:
         getRoot()->queueEndRendering();
@@ -157,24 +186,26 @@ bool Game::keyPressed(const KeyboardEvent& evt)
     case 100: //ASCII code for "d"
     {
         paddle->MoveRight();
-        
     }
     break;
-    case 32:
+    case 32: //ASCII code for "spacebar"
         ball->SetStart();
         break;
-
     default:
         break;
     }
-    //SinbadNode->setPosition(x, y, z);
     return true;
 }
 
+///Used to add all object to scene
+///
+/// Currently added
+/// -light
+/// -background
+/// -ball
+/// -paddle 
 void Game::createScene()
 {
-    // -- tutorial section start --
-
     Ogre::SceneNode* node = scnMgr->createSceneNode("Node1");
     scnMgr->getRootSceneNode()->addChild(node);
 
@@ -185,8 +216,6 @@ void Game::createScene()
        //! [turnlights]
 
     //! [newlight]
-    //
-
     Ogre::Light* light = scnMgr->createLight("Light1");
     light->setType(Ogre::Light::LT_DIRECTIONAL);
     light->setDirection(Ogre::Vector3(1, -1, 0));
@@ -229,6 +258,9 @@ void Game::createScene()
     ball = new Ball(scnMgr, SinbadNode, paddle);
 }
 
+/// Adding camera to scene
+///
+/// Sets the settings for the camera in the scene postion, direction projection type and etc. 
 void Game::createCamera()
 {
     //! [camera]
@@ -238,7 +270,6 @@ void Game::createCamera()
     Camera* cam = scnMgr->createCamera("myCam");    
     cam->setProjectionType(PT_ORTHOGRAPHIC);
     cam->setOrthoWindowHeight(100);
-    //cam->setOrthoWindow(100, 100);
     cam->setNearClipDistance(5); // specific to this sample
     cam->setAutoAspectRatio(false);
     camNode->attachObject(cam);
@@ -247,10 +278,6 @@ void Game::createCamera()
     
     // and tell it to render into the main window
     getRenderWindow()->addViewport(cam);
-
-    //! [camera]
-
-
 }
 
 int main(int argc, char** argv)

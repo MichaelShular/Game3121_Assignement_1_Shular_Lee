@@ -2,10 +2,10 @@
 #include <iostream>
 
 
-/// The defualt conconstructor used for
+/// The defualt conconstructor used for setting default settings for paddle object
 /// 
-/// @param:
-/// @param:
+/// @param: a SceneManager
+/// @param: a SceneNode
 Paddle::Paddle(Ogre::SceneManager* scMgr, SceneNode* SceneNode)
 {
     this->mSceneManager = scMgr;

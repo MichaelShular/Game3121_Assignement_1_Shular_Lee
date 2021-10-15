@@ -1,11 +1,12 @@
 #include "Ball.h"
 #include <iostream>
 
-/// The defualt conconstructor used for
+/// The defualt conconstructor used for setting defualt settings of the ball object
 /// 
-/// @param:
-/// @param:
-/// @param:
+/// 
+/// @param: a SceneManager
+/// @param: a SceneNode
+/// @param: a paddle class object 
 Ball::Ball(Ogre::SceneManager* scMgr, SceneNode* SceneNode, Paddle* _pad)
 {
     mScore = 0;
@@ -54,6 +55,9 @@ int Ball::GetScore()
     return mScore;
 }
 
+/// Used to set state of ball to false.
+/// 
+/// This bool is used to allow the if statement in update to allow movment. 
 void Ball::SetStart()
 {
     mStay = false;
@@ -84,8 +88,6 @@ void Ball::Update(Ogre::Real real)
 
     }
     else {
-
-
         if (!mStay)
         {
             //Paddle Collision
