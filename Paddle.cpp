@@ -16,13 +16,14 @@ Paddle::Paddle(Ogre::SceneManager* scMgr, SceneNode* SceneNode)
 }
 
 Ogre::Vector3 Paddle::GetPosition()
-{    
-    mSceneNode->getPosition();
+{
+    //Return the world position to ball
     return mSceneNode->getPosition();
 }
 
 void Paddle::MoveRight()
 {
+    // Move Right function
     mSceneNode->translate(Vector3(0.9, 0.0, 0));    
 }
 
@@ -32,6 +33,7 @@ void Paddle::MoveLeft()
 }
 
 AxisAlignedBox Paddle::GetWorldAABB()
-{    
+{
+    //Return the World AABB and ball will check collision between ball aabbb and paddle aabb
     return mSceneNode->_getWorldAABB();
 }
