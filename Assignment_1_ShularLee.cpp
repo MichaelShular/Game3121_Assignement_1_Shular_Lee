@@ -29,6 +29,9 @@ private:
     float _movementspeed;
     float _mousespeed;
     float mPausedTime;
+    String mScore;
+    String mLives;
+
 public:
 
     /// Default Updator constructor.
@@ -54,9 +57,10 @@ public:
     bool frameStarted(const Ogre::FrameEvent& evt)
     {      
         _ball->Update(evt.timeSinceLastFrame);
-        _UIElements->setLives(Ogre::StringConverter::toString(_ball->getNumberOfLife()));
-        _UIElements->setScore(Ogre::StringConverter::toString(_ball->GetScore()));
-        
+        mLives = "Lives: " + Ogre::StringConverter::toString(_ball->getNumberOfLife());
+        _UIElements->setLives(mLives);
+        mScore = "Score: " + Ogre::StringConverter::toString(_ball->GetScore());
+        _UIElements->setScore(mScore);
         
         if (_ball->getNumberOfLife() <= 0 )
         {
