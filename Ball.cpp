@@ -23,14 +23,13 @@ Ball::Ball(Ogre::SceneManager* scMgr, SceneNode* SceneNode, Paddle* _pad)
 
 Ball::~Ball()
 {
-    delete this;
 }
 
 Ogre::Vector3 Ball::GetPosition()
 {
 	return Ogre::Vector3();
 }
-//Reset the GamePlay
+
 void Ball::Reset()
 {
     mScore = 0;
@@ -63,7 +62,7 @@ void Ball::Update(Ogre::Real real)
 {
     if (mNumLife <= 0)
     {
-        // End
+
     }
     else {
 
@@ -105,7 +104,6 @@ void Ball::Update(Ogre::Real real)
         }
         else
         {
-            //Ball stay with paddle until start
             mSceneNode->setPosition(pad->GetPosition().x, pad->GetPosition().y, 34.0f);
         }
     }

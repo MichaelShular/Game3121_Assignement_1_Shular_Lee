@@ -17,7 +17,9 @@ public:
 	int getNumberOfLife();
 	void Update(Ogre::Real real);	
 	int GetScore();
-	void SetStart();	
+	void SetStart();
+	void Moving();
+	
 	
 private:
 	Paddle* pad;

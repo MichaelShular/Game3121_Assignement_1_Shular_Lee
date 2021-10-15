@@ -17,6 +17,8 @@
 #include <iostream>
 #include <OgreTimer.h>
 
+
+
 using namespace Ogre;
 using namespace OgreBites;
 
@@ -25,7 +27,6 @@ class UI
 private:
     OgreBites::Label* mLives;
     OgreBites::Label* mScore;
-    OgreBites::Label* mFrames;
     OgreBites::Label* mTime;
 public: 
     UI(TrayManager* mTrayMgr);
@@ -33,15 +34,17 @@ public:
     void setTime(String a);
     void setLives(String a);
     void setScore(String a);
-    void setFrames(String a);
 };
 
 UI::UI(TrayManager* mTrayMgr)
 {
     mLives = mTrayMgr->createLabel(TL_TOPLEFT, "lives", "Lives: 3", 150);
     mScore = mTrayMgr->createLabel(TL_TOPLEFT, "score", "Score: 0", 150);
-    mFrames = mTrayMgr->createLabel(TL_TOPRIGHT, "frames", "Frames: ", 150);
-    mTime = mTrayMgr->createLabel(TL_TOPRIGHT, "time", "Time: ", 150);
+    mTrayMgr->showFrameStats(TL_TOPRIGHT);
+    mTrayMgr->toggleAdvancedFrameStats();
+    
+    
+    mTime = mTrayMgr->createLabel(TL_TOPRIGHT, "time", "Time: 0", 150);
 }
 
 void UI::setTime(String a)
@@ -59,11 +62,6 @@ void UI::setScore(String a)
     mScore->setCaption(a);
 }
 
-void UI::setFrames(String a)
-{
-    mFrames->setCaption(a);
-}
-
 class Updater : public Ogre::FrameListener
 {
 private:
@@ -71,6 +69,7 @@ private:
     UI* _UI;
     Ball* _ball;
     Ogre::SceneNode* _camNode;
+    Ogre::Timer timer; 
     float _movementspeed;
     float _mousespeed;
 public:
@@ -82,12 +81,15 @@ public:
         _camNode = camNode;
         _movementspeed = 200.0f;
         _mousespeed = 0.002f;
+        
     }
 
     bool frameStarted(const Ogre::FrameEvent& evt)
     {      
-        _UI->setFrames("5");
         _ball->Update(evt.timeSinceLastFrame);
+        _UI->setLives(Ogre::StringConverter::toString(_ball->getNumberOfLife()));
+        _UI->setScore(Ogre::StringConverter::toString(_ball->GetScore()));
+        _UI->setTime(Ogre::StringConverter::toString(timer.getMilliseconds() / 1000));
         return true;
     }
 };
