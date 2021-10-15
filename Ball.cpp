@@ -13,7 +13,7 @@ Ball::Ball(Ogre::SceneManager* scMgr, SceneNode* SceneNode, Paddle* _pad)
     mSceneNode->setPosition(Ogre::Vector3(0.0f, 4.0f, 34.0f ));
     mSceneNode->setScale(0.03f, 0.03f, 0.03f);
     pad = _pad;
-    mNumLife = 5;
+    mNumLife = 3;
     mBallSpeed = 30.f;    
     mBallDirection = Vector3(-1, 0, -1);
     mStay = true;
@@ -33,7 +33,7 @@ Ogre::Vector3 Ball::GetPosition()
 void Ball::Reset()
 {
     mScore = 0;
-    mNumLife = 5;
+    mNumLife = 3;
     mStay = true;
     mBallDirection = Vector3(-1, 0, -1);
 }
